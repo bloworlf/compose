@@ -14,8 +14,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material3.Button
 import androidx.compose.material3.ElevatedButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -106,11 +111,21 @@ fun Greeting(name: String, modifier: Modifier) {
                         fontWeight = FontWeight.ExtraBold
                     )
                 )
+                if (expanded.value) {
+                    Text(
+                        text = ("Composem ipsum color sit lazy, " +
+                                "padding theme elit, sed do bouncy. ").repeat(4),
+                    )
+                }
             }
-            ElevatedButton(onClick = {
+            IconButton(onClick = {
                 expanded.value = !expanded.value
             }) {
-                Text(text = if (!expanded.value) "Show more" else "Show less")
+//                Text(text = if (!expanded.value) "Show more" else "Show less")
+                Icon(
+                    imageVector = if (!expanded.value) Icons.Filled.ExpandMore else Icons.Filled.ExpandLess,
+                    contentDescription = if (!expanded.value) "Show more" else "Show less"
+                )
             }
         }
 
